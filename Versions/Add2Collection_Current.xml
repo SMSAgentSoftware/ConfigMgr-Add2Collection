@@ -8,5 +8,12 @@
       </Changes>
       <ReleaseDate>2018-January-05</ReleaseDate>
     </Version>
+    <Version>
+      <Value>0.5</Value>
+      <Changes>
+        <Change>Beta release 2</Change>
+      </Changes>
+      <ReleaseDate>2018-January-05</ReleaseDate>
+    </Version>
   </Versions>
 </Add2Collection>
