@@ -7,6 +7,6 @@ The tool is coded in PowerShell using WPF for the UI.
 An MSI installer can be downloaded from here: https://gallery.technet.microsoft.com/ConfigMgr-Add2Collection-fe63fe15
 
 ## Screenshots
-![Screenshot1](https://raw.githubusercontent.com/SMSAgentSofware/ConfigMgr-Add2Collection/master/Add2-2.png)
+![Screenshot](add2-2.png)
 
-![Screenshot2](https://raw.githubusercontent.com/SMSAgentSofware/ConfigMgr-Add2Collection/master/Add2-1.png)
+![Screenshot](add2-1.png)
