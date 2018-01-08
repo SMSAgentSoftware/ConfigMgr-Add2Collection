@@ -80,11 +80,20 @@ Function Query-RBACPermissions {
     # Find collections where the user has modify resource permissions as a minimum using RBAC
     # Granted operations are calculated on the collection instance from values in the vRBAC_AvailableOperations view, ie:
     # 1 (Read) + 2 (Modify) + 128 (Modify Resource) + 4096 (Read Resource) = 4227, the minimum permissions required to add resources to collections.
+    # Convert decimal to hex using my Convert-Number function
     $Query = "
     select col.CollectionID from dbo.RBAC_InstancePermissions ip
     left join dbo.v_Collections col on ip.ObjectKey = col.SiteID
     where ip.AdminID in ($AdminIDs)
-    and ip.GrantedOperations >= 4227
+    -- has bitflag 1 (Read)
+    and ip.GrantedOperations & 0x1 != 0
+    -- has bitflag 2 (Modify)
+    and ip.GrantedOperations & 0x2 != 0
+    -- has bitflag 128 (Modify Resource)
+    and ip.GrantedOperations & 0x80 != 0
+    -- has bitflag 4096 (Read Resource)
+    and ip.GrantedOperations & 0x1000 != 0
+    -- is collection
     and ip.ObjectTypeID = 1
     "
 
