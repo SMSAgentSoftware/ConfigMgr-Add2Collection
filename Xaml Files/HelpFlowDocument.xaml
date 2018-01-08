@@ -1,0 +1,127 @@
+﻿<FlowDocumentReader xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" ViewingMode="Scroll">
+    <FlowDocument FontFamily="Segui" FontSize="16">
+        <Paragraph FontSize="22">
+            <Bold>ConfigMgr Add2Collection</Bold>
+        </Paragraph>
+        <Paragraph >
+            <Bold>ConfigMgr Add2Collection</Bold> is a standalone tool that enables you to add resources to collections in System Center Configuration Manager. It can be used by ConfigMgr admins or IT support staff to add devices, users or user groups to collections without needing to use the ConfigMgr console.
+            It works with Role-Based Access Control (RBAC) so that only the collections to which you have the required permissions are visible in the tool.
+        </Paragraph>
+        <Paragraph FontWeight="Bold">
+            Requirements (see About Permissions for more info)
+        </Paragraph>
+        <List>
+            <ListItem>
+                <Paragraph>
+                    PowerShell 5 minimum on the host computer
+                </Paragraph>
+            </ListItem>
+            <ListItem>
+                <Paragraph>
+                    Minimum read-only access (db_datareader role) to the Configuration Manager database
+                </Paragraph>
+            </ListItem>
+            <ListItem>
+                <Paragraph>
+                    PS Remoting access to the ConfigMgr site server if the tool is not used on the server directly
+                </Paragraph>
+            </ListItem>
+            <ListItem>
+                <Paragraph>
+                    RBAC Permissions
+                </Paragraph>
+            </ListItem>
+        </List>
+        <Paragraph FontWeight="Bold">
+            How the Tool Works
+        </Paragraph>
+        <Paragraph>
+            The tool connects to your System Center Configuration Manager database to retrieve information about collections and resources in your site. After selecting the collection you wish to add resources to, you can add resources by simply entering resource names in the <Bold>Resources to add</Bold> box and clicking <Bold>Start</Bold>.
+            The tool will then use classes in the dlls from the ConfigMgr installation files to invoke the relevant WMI method to add new direct collection rules for that collection. The dlls are used to avoid having to import the ConfigurationManager PowerShell module. If you are working on a remote system to the site server, PS remoting will be used.
+        </Paragraph>
+        <Paragraph FontWeight="Bold">
+            How This Tool Can Help
+        </Paragraph>
+        <Paragraph>
+            This tool is useful for both IT admins or support staff to view collection membership or add resources to collections via a direct collection rule. Access to the ConfigMgr console is not required. Since RBAC is honoured, it does not attempt to override any permissions assigned to the user using that security model.
+        </Paragraph>
+        <Paragraph FontWeight="Bold">
+            How To Use The Tool
+        </Paragraph>
+        <Paragraph>
+            Upon opening for the first time, you will be prompted to add the details of your Configuration Manager database and Site Server in the <Bold>Settings</Bold> menu. Click <Bold>Save</Bold> and these will be saved to the registry.
+            <LineBreak/>
+            <LineBreak/>
+            Click <Bold>Select Collection</Bold> to display your collection heirarchy, where you can navigate to find the collection you wish to view or update. Sub-folders up to 4 levels deep will be displayed. Double-click the collection to select it.
+            <LineBreak/>
+            <LineBreak/>
+            Collection information will now be displayed in the tool. To view the membership of the collection, click the <Bold>Populate</Bold> button. The <Italic>IsDirect</Italic> column indicates whether the resource has been added to the collection by a direct collection rule.
+            <LineBreak/>
+            <LineBreak/>
+            To add resources to a collection, simply add resource names in the <Bold>Resources to add</Bold> box. If it is a device collection, simply add computer names. If it is a user collection, simply add the usernames or user group names. The domain prefix is not needed. Add each resource on a new line.
+            <LineBreak/>
+            <LineBreak/>
+            Click <Bold>Start</Bold> to begin adding the resources to the collection. The status of each resource will be displayed in the <Bold>Results</Bold> grid as it gets processed. If a resource already exists in the collection, it will not attempt to add it again. If a resource does not exist in ConfigMgr, the results grid will say so.
+        </Paragraph>
+        <Paragraph FontWeight="Bold">
+            About Permissions
+        </Paragraph>
+        <Paragraph FontStyle="Italic">
+            PS remoting
+        </Paragraph>
+        <Paragraph>
+            PS remoting must be configured to the site server when the tool is being used on a remote system. If the user account is not a local administrator on the site server, adding the account to the <Bold>Remote Management Users</Bold> local group on the site server will grant the necessary permissions based on the default PowerShell session configuration.
+        </Paragraph>
+        <Paragraph FontStyle="Italic">
+            RBAC Permissions
+        </Paragraph>
+        <Paragraph>
+            Setting permissions at the collection level in ConfigMgr can be tricky. You can assign collections to an administrative user on the Security Scopes tab of the account properties in ConfigMgr. In order to grant the right to add resources to a collection, you must add the <Italic>limiting collection</Italic> for any collection you wish to grant access to.
+            This effectively means that <Italic>any</Italic> collection using the limiting collection you grant access to can be accessed by the user account. So you need to plan your limiting collections carefully when using RBAC.
+        </Paragraph>
+        <Paragraph>
+            In addition to setting the appropriate Security Scopes and collections, the Security Role permissions must also be defined. The following are the minimum permissions required in the Security Role to add resources to collections.
+        </Paragraph>
+        <List>
+            <ListItem>
+                <Paragraph>
+                    <Italic>Collection</Italic>
+                </Paragraph>
+                <List>
+                    <ListItem>
+                        <Paragraph>
+                            Modify
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Modify Resource
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Read
+                        </Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>
+                            Read Resource
+                        </Paragraph>
+                    </ListItem>
+                </List>
+            </ListItem>
+            <ListItem>
+                <Paragraph>
+                    <Italic>Site</Italic>
+                </Paragraph>
+                <List>
+                    <ListItem>
+                        <Paragraph>
+                            Read
+                        </Paragraph>
+                    </ListItem>
+                </List>
+            </ListItem>
+        </List>
+    </FlowDocument>
+</FlowDocumentReader>
