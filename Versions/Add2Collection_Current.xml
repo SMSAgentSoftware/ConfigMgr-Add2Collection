@@ -4,16 +4,16 @@
     <Version>
       <Value>0.1</Value>
       <Changes>
-        <Change>Beta release</Change>
+        <Change>Beta Release</Change>
       </Changes>
       <ReleaseDate>2018-January-05</ReleaseDate>
     </Version>
     <Version>
-      <Value>0.5</Value>
+      <Value>1.0</Value>
       <Changes>
-        <Change>Beta release 2</Change>
+        <Change>Intial Release</Change>
       </Changes>
-      <ReleaseDate>2018-January-05</ReleaseDate>
+      <ReleaseDate>2018-January-08</ReleaseDate>
     </Version>
   </Versions>
 </Add2Collection>
