@@ -3,9 +3,6 @@ ConfigMgr Add2Collection is a free tool that allows IT administrators and suppor
 
 The tool is coded in PowerShell using WPF for the UI.
 
-## Installer
-An MSI installer can be downloaded from here: https://gallery.technet.microsoft.com/ConfigMgr-Add2Collection-fe63fe15
-
 ## Screenshots
 ![Screenshot](add2-2.png)
 
